@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package nhahang;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import login.Login;
-import manager.FoodManager;
 
 /**
  *
@@ -17,8 +19,12 @@ public class NhaHang {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Login login = new Login();
+        try {
+            // TODO code application logic here
+            Login login = new Login();
+        } catch (SQLException ex) {
+            Logger.getLogger(NhaHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

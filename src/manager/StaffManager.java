@@ -7,6 +7,7 @@ package manager;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import javax.swing.JButton;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,17 +21,15 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class StaffManager extends NavBar{
-    private String column[] = new String[] {
-			"ID", "Name", "Birthday", "Address"
-		};
+    private String column[] = new String[] {"Code", "Email", "Name", "Birthday", "Address"};
     
     private String[][] objects;
     
     
     private JTable table;
   
-	public StaffManager() {
-		
+	public StaffManager(Application application) {
+		super(application);
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 68, 947, 530);
@@ -69,8 +68,9 @@ public class StaffManager extends NavBar{
 		table.getColumnModel().getColumn(1).setPreferredWidth(150);
 		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		table.getColumnModel().getColumn(1).setResizable(false);
-		table.getColumnModel().getColumn(2).setPreferredWidth(60);
-		table.getColumnModel().getColumn(3).setPreferredWidth(450);
+		table.getColumnModel().getColumn(2).setPreferredWidth(70);
+		table.getColumnModel().getColumn(3).setPreferredWidth(80);
+                table.getColumnModel().getColumn(4).setPreferredWidth(360);
 		scrollPane.setViewportView(table);
 		
 		
@@ -87,9 +87,11 @@ public class StaffManager extends NavBar{
 	
 
 	public void setTable() {
-		table.setModel(new DefaultTableModel(
-				objects,
-				column
-			));
+            objects = application.connect.get_Staff();
+            
+            table.setModel(new DefaultTableModel(
+                objects,
+                column
+            ));
 	}
 }

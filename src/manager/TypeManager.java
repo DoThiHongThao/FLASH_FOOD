@@ -7,6 +7,7 @@ package manager;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import javax.swing.JButton;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TypeManager extends NavBar{
     private String column[] = new String[] {
-			"ID Type", "Name", "Note"
+			"Code Type", "Name", "Note"
 		};
     
     private String[][] objects;
@@ -29,8 +30,8 @@ public class TypeManager extends NavBar{
     
     private JTable table;
   
-	public TypeManager() {
-		
+	public TypeManager(Application application) {
+		super(application);
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 68, 947, 530);
@@ -45,7 +46,7 @@ public class TypeManager extends NavBar{
 		
 		JLabel lblNewLabel = new JLabel("List Type");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblNewLabel.setBounds(25, 25, 615, 30);
+		lblNewLabel.setBounds(25, 25, 610, 30);
 		panel_1.add(lblNewLabel);
 		
 		JPanel panel_2 = new JPanel();
@@ -86,9 +87,10 @@ public class TypeManager extends NavBar{
 	
 
 	public void setTable() {
-		table.setModel(new DefaultTableModel(
-				objects,
-				column
-			));
+            objects = application.connect.get_Types();
+            table.setModel(new DefaultTableModel(
+                objects,
+                column
+            ));
 	}
 }

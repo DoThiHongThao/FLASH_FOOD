@@ -7,6 +7,9 @@ package manager;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,7 +26,7 @@ public class FoodManager extends NavBar{
     private static final long serialVersionUID = 1L;
 
 	private String column[] = new String[] {
-			"ID Food", "Name", "Price", "ID Type"
+			"Code Food", "Name", "Price", "Type"
 		};
     
     private String[][] objects;
@@ -31,7 +34,8 @@ public class FoodManager extends NavBar{
     
     private JTable table;
   
-	public FoodManager() {
+	public FoodManager(Application application) {
+            super(application);
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 68, 947, 530);
@@ -48,6 +52,16 @@ public class FoodManager extends NavBar{
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblNewLabel.setBounds(25, 25, 615, 30);
 		panel_1.add(lblNewLabel);
+                
+                JButton addButton = new JButton("Create");
+                addButton.setBounds(820, 25, 100, 40);
+                panel_1.add(addButton);
+                
+                addButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e) {
+                        new CreateFood(application).setVisible(true);
+                    }
+                });
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(10, 65, 1059, 485);
@@ -88,10 +102,11 @@ public class FoodManager extends NavBar{
 	
 
 	public void setTable() {
-		table.setModel(new DefaultTableModel(
-				objects,
-				column
-			));
+            this.objects = application.connect.get_Foods();
+            table.setModel(new DefaultTableModel(
+                objects,
+                column
+            ));
 	}
 	
 }

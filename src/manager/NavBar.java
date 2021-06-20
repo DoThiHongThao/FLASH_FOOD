@@ -25,6 +25,7 @@ import javax.swing.SwingConstants;
  */
 public class NavBar extends JPanel implements KeyListener{
     private JPanel contentPane;
+    public Application application;
 	private JTextField searchTextField;
 	
 	protected int page;
@@ -35,10 +36,10 @@ public class NavBar extends JPanel implements KeyListener{
 	public JButton typeButton;
 	public JMenuBar menuBar;
   
-	public NavBar() {
+	public NavBar(Application application) {
 		
 		this.page = 0;
-		
+		this.application = application;
 		setSize(951, 600);
 		setLayout(null);
 		
@@ -91,11 +92,17 @@ public class NavBar extends JPanel implements KeyListener{
 		foodButton.setBackground(Color.WHITE);
 		foodButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		foodButton.setBorderPainted(false);
+                foodButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e) {
+                        application.switchPanel(application.foodManager);
+                    }
+                });
 		
 		
 		JButton staffButton = new JButton("STAFF");
 		staffButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+                            application.switchPanel(application.staffManager);
 			}
 		});
 		staffButton.setForeground(Color.BLACK);
@@ -112,6 +119,11 @@ public class NavBar extends JPanel implements KeyListener{
 		typeButton.setBackground(Color.WHITE);
 		typeButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		typeButton.setBorderPainted(false);
+                typeButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e) {
+                        application.switchPanel(application.typeManager);
+                    }
+                });
 		homePanel.add(typeButton);
 		
 		menuBar = new JMenuBar();

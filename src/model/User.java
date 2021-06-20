@@ -11,47 +11,69 @@ package model;
  */
 public class User {
     private String MaNV;
-	private String HoTen;
-	private String NgaySinh;
-	private String DiaChi;
-	
-	public User(String MaNV, String HoTen, String NgaySinh, String DiaChi) 
-	{
-		this.HoTen = HoTen;
-		this.MaNV = MaNV;
-		this.DiaChi = DiaChi;
-		this.NgaySinh = NgaySinh;
-	}
+    private String email;
+    private String password;
+    private String HoTen;
+    private String NgaySinh;
+    private String DiaChi;
 
-	public String getMaNV() {
-		return MaNV;
-	}
+    public User(String MaNV, String HoTen, String NgaySinh, String DiaChi, String email, String password) 
+    {
+        this.email = email;
+        this.password = password;
+        this.HoTen = HoTen;
+        this.MaNV = MaNV;
+        this.DiaChi = DiaChi;
+        this.NgaySinh = NgaySinh;
+    }
 
-	public void setMaNV(String maNV) {
-		MaNV = maNV;
-	}
+    public User() {}
 
-	public String getHoTen() {
-		return HoTen;
-	}
+    public String getMaNV() {
+            return MaNV;
+    }
 
-	public void setHoTen(String hoTen) {
-		HoTen = hoTen;
-	}
+    public void setMaNV(String maNV) {
+            MaNV = maNV;
+    }
 
-	public String getNgaySinh() {
-		return NgaySinh;
-	}
+    public String getHoTen() {
+            return HoTen;
+    }
 
-	public void setNgaySinh(String ngaySinh) {
-		NgaySinh = ngaySinh;
-	}
+    public void setHoTen(String hoTen) {
+            HoTen = hoTen;
+    }
 
-	public String getDiaChi() {
-		return DiaChi;
-	}
+    public String getNgaySinh() {
+            return NgaySinh;
+    }
 
-	public void setDiaChi(String diaChi) {
-		DiaChi = diaChi;
-	}
+    public void setNgaySinh(String ngaySinh) {
+            NgaySinh = ngaySinh;
+    }
+
+    public String getDiaChi() {
+            return DiaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+            DiaChi = diaChi;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword(String email) {
+        this.password = password;
+    }
 }
